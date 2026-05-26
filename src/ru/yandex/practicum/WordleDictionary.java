@@ -13,18 +13,25 @@ public class WordleDictionary {
     private List<String> words;
 
     public WordleDictionary(List<String> words) {
-        this.words = words;
+        this.words = new ArrayList<>();
+
+        for (String word : words) {
+            if (word.length() == 5) {
+                this.words.add(word);
+            }
+        }
+
     }
 
-    public  List<String> getWords(){
+    public List<String> getWords() {
         return new ArrayList<>(words);
     }
 
-    public boolean contains(String word){
+    public boolean contains(String word) {
         return words.contains(word);
     }
 
-    public int size(){
+    public int size() {
         return words.size();
     }
 }
