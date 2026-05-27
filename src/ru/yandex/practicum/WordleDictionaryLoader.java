@@ -20,13 +20,13 @@ public class WordleDictionaryLoader {
         List<String> words = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(Files.newInputStream(path), "UTF-8"))){
+                new InputStreamReader(Files.newInputStream(path), "UTF-8"))) {
             String line;
-            while ((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
 
                 line = line.trim().toLowerCase();
 
-                if (line.length() != 5){
+                if (line.length() != 5) {
                     continue;
                 }
 
@@ -36,7 +36,7 @@ public class WordleDictionaryLoader {
             }
         }
 
-        if (words.isEmpty()){
+        if (words.isEmpty()) {
             throw new RuntimeException("Словарь не содержит слов длиной 5 букв");
         }
 
