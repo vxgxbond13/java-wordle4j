@@ -65,6 +65,23 @@ public class WordleGame {
         return generateFeedback(guess);
     }
 
+    public String getHint() {
+        List<String> possibleWords = new ArrayList<>();
+
+        for (String word : dictionary.getWords()) {
+            if (isWordPossible(word)) {
+                possibleWords.add(word);
+            }
+        }
+
+        if (possibleWords.isEmpty()) {
+            return "Нет подходящих слов";
+        }
+
+        Random random = new Random();
+        return possibleWords.get(random.nextInt(possibleWords.size()));
+    }
+
     private void validateGuess(String guess) {
         if (guess == null || guess.length() != 5) {
             throw new IllegalArgumentException("Слово должно состоять из 5 букв");
@@ -105,23 +122,6 @@ public class WordleGame {
         }
 
         return new String(feedback);
-    }
-
-    public String getHint() {
-        List<String> possibleWords = new ArrayList<>();
-
-        for (String word : dictionary.getWords()) {
-            if (isWordPossible(word)) {
-                possibleWords.add(word);
-            }
-        }
-
-        if (possibleWords.isEmpty()) {
-            return "Нет подходящих слов";
-        }
-
-        Random random = new Random();
-        return possibleWords.get(random.nextInt(possibleWords.size()));
     }
 
     private boolean isWordPossible(String word) {
